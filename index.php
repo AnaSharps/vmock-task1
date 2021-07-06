@@ -50,28 +50,32 @@
 
 <html>
   <head>
-      <title>Login</title>
-    <link rel="stylesheet" href="css/style.module.css">
+    <title>Login</title>
+    <link rel="stylesheet" href="css/forms/style.module.css">
   </head>
   <body>
-    <form method="POST" action="#">
-      <div>
-        <h1>Login</h1>
+    <div class="main-container">
+      <div class="form-container">
+        <form method="POST" action="#">
+          <div class="heading-container">
+            <h1>Login</h1>
+          </div>
+          <div class="input-container">
+            <div class="labelled-input">
+              <p>Username</p>
+              <input name="username" value="<?php echo $username; ?>"/>
+            </div>
+            <div class="labelled-input">
+              <p>Password</p>
+              <input name="password" value="<?php echo $_POST['password']; ?>" />
+            </div>
+            <input type="submit" value="LOGIN" name="submit" class="login-button" />
+          </div>
+          <div class="redirect">
+            <p>Don't have an account? <a href="register.php">Register Here!</a></p>
+          </div>
+        </form>
       </div>
-      <div class="input-container">
-        <div class="labelled-input">
-          <p>Username</p>
-          <input name="username" value="<?php echo $username; ?>"/>
-        </div>
-        <div class="labelled-input">
-          <p>Password</p>
-          <input name="password" value="<?php echo $_POST['password']; ?>" />
-        </div>
-        <input type="submit" value="LOGIN" name="submit" class="login-button" />
-      </div>
-      <div class="redirect">
-        <p>Don't have an account? <a href="register.php">Register Here!</a></p>
-      </div>
-    </form>
+    </div>
   </body>
 </html>
