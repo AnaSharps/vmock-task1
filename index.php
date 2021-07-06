@@ -50,6 +50,7 @@
 
 <html>
   <head>
+      <title>Login</title>
     <link rel="stylesheet" href="css/style.module.css">
   </head>
   <body>
@@ -69,8 +70,7 @@
         <input type="submit" value="LOGIN" name="submit" class="login-button" />
       </div>
       <div class="redirect">
-        <p>Don't have an account?</p>
-        <a href="register.php">Register Here!</a>
+        <p>Don't have an account? <a href="register.php">Register Here!</a></p>
       </div>
     </form>
   </body>

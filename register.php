@@ -54,12 +54,28 @@
       <link rel="stylesheet" href="css/style.module.css">
     </head>
     <body>
-        <form method="POST" action="#">
-            <input name="username" class="username-register" value="<?php echo $_POST['username']; ?>"/>
-            <input name="password" class="password-register" value="<?php echo $_POST['password']; ?>" />
-            <input name="confirm-password" class="confirm-password" value="<?php echo $_POST['confirm-password']; ?>" />
-            <input type="submit" value="REGISTER" name="submit" class="register-button" />
-        </form>
+      <form method="POST" action="#">
+      <div class="heading-container">
+        <h1>Register</h1>
+      </div>
+      <div class="input-container">
+        <div class="labelled-input">
+          <p>Username</p>
+          <input name="username" class="username-register" value="<?php echo $_POST['username']; ?>"/>
+        </div>
+        <div class="labelled-input">
+          <p>Password</p>
+          <input name="password" class="password-register" value="<?php echo $_POST['password']; ?>" />
+        </div>
+        <div class="labelled-input">
+          <p>Confirm Password</p>
+          <input name="confirm-password" class="confirm-password" value="<?php echo $_POST['confirm-password']; ?>" />
+        </div>
+        <input type="submit" value="REGISTER" name="submit" class="register-button" />
+      </div>
+      <div class="redirect">
         <p>Already have an account? <a href="index.php">Login</a></p>
+      </div>
+      </form>
     </body>
 </html>
