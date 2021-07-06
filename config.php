@@ -18,6 +18,10 @@
     exit();
   }
 
+  $conn = new PDO("mysql:host=$db_host; dbname=$db_db", $db_user, $db_password);
+  // set the PDO error mode to exception
+  $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
   // echo 'Success: A proper connection to MySQL was made.';
   // echo '<br>';
   // echo 'Host information: '.$mysqli->host_info;

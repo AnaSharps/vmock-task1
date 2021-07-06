@@ -9,21 +9,39 @@
 
   if (isset($_POST['submit'])) {
     $username = $_POST['username'];
-    $password = md5($_POST['password']);
-    $confirmpass = md5($_POST['confirm-password']);
+    
+    if ($_POST['password'] === $_POST['confirm-password']) {
+      $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+    // $password = $_POST['password'];
 
-    if ($confirmpass === $password) {
-      $sql = "INSERT INTO demo (username, password, role) VALUES ('$username', '$password', 'normal')";
-      $result = mysqli_query($mysqli, $sql);
-      
-      if (!$result) {
-        echo "Woops! Something went wrong!";
-      } else {
+      try {
+        $sql = $conn -> prepare("INSERT INTO demo (username, password, role) VALUES (:username, :password, 'normal')");
+        $sql -> bindParam(':password', $password);
+        $sql -> bindParam(':username', $username);
+        $sql -> execute();
+
         echo "hello there!";
         $_POST['username'] = "";
         $_POST['password'] = "";
         $_POST['confirm-password'] = "";
+        header("Location: index.php");        
+      } catch(PDOException $e) {
+          echo "Error: " . $e->getMessage();
       }
+
+
+      $sql = "INSERT INTO demo (username, password, role) VALUES ('$username', '$password', 'normal')";
+      // $result = mysqli_query($mysqli, $sql);
+      
+      // if (!$result) {
+      //   echo "Woops! Something went wrong!";
+      // } else {
+      //   echo "hello there!";
+      //   $_POST['username'] = "";
+      //   $_POST['password'] = "";
+      //   $_POST['confirm-password'] = "";
+      //   header("Location: index.php");
+      // }
     } else {
       echo "Passwords do not match!";
     }
@@ -32,14 +50,16 @@
 
 <html>
     <head>
-        <body>
-            <form method="POST" action="#">
-                <input name="username" class="username-register" value="<?php echo $_POST['username']; ?>"/>
-                <input name="password" class="password-register" value="<?php echo $_POST['password']; ?>" />
-                <input name="confirm-password" class="confirm-password" value="<?php echo $_POST['confirm-password']; ?>" />
-                <input type="submit" value="REGISTER" name="submit" class="register-button" />
-            </form>
-            <p>Already have an account? <a href="index.php">Login</a></p>
-        </body>
+      <title>Register</title>
+      <link rel="stylesheet" href="css/style.module.css">
     </head>
+    <body>
+        <form method="POST" action="#">
+            <input name="username" class="username-register" value="<?php echo $_POST['username']; ?>"/>
+            <input name="password" class="password-register" value="<?php echo $_POST['password']; ?>" />
+            <input name="confirm-password" class="confirm-password" value="<?php echo $_POST['confirm-password']; ?>" />
+            <input type="submit" value="REGISTER" name="submit" class="register-button" />
+        </form>
+        <p>Already have an account? <a href="index.php">Login</a></p>
+    </body>
 </html>

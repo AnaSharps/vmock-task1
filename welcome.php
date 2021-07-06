@@ -87,6 +87,7 @@ if (isset($_POST['editDetails'])) {
 <html>
     <head>
         <title>Welcome!!!!</title>
+        <link rel="stylesheet" href="css/style.module.css">
     </head>
     <body>
         <div>

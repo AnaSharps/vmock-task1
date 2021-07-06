@@ -50,6 +50,15 @@
                     header("Location: welcome.php");
                 }
             }
+            if (isset($_POST['resetPassword'])) {
+                $_SESSION['editUser'] = $default_id;
+                header("Location: resetPass.php");
+            }
+            if (isset($_POST['cancel'])) {
+                $_SESSION['editUser'] = null;
+                header("Location: welcome.php");
+            }
+
         } else {
             echo "<script>alert('No such user found')</script>";
             $_SESSION['editUser'] = null;
@@ -62,6 +71,7 @@
 <html>
     <head>
         <title>Edit Details</title>
+        <link rel="stylesheet" href="css/style.module.css">
     </head>
     <body>
         <div>
@@ -72,9 +82,10 @@
                 <input name='userId' value="<?php if ($_POST['userId']) echo $_POST['userId']; else echo $default_id;?>" />
                 <input  name='username' value="<?php if ($_POST['username']) echo $_POST['username']; else echo $default_name;?>"/>
                 <input name='userRole' value="<?php if ($_POST['userRole']) echo $_POST['userRole']; else echo $default_role;?>" />
-                <button name='resetPass'>Reset Password</button>
+                <button name='resetPassword'>Reset Password</button>
                 <button name='resetDetails'>Reset Details</button>
                 <button name='updateDetails'>Update</button>
+                <button name='cancel'>Cancel</button>
             </form>
         </div>
         <div>
