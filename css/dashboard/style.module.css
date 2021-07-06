@@ -1,0 +1,87 @@
+body {
+    margin: 0;
+}
+.main-container {
+    height: -webkit-fill-available;
+    background-color: rgba(222, 217, 234, 0.6);
+}
+
+.heading-container-dashboard {
+    width: inherit;
+    margin-top: 0;
+    background-color: rgba(4, 4, 35, 0.9);
+    color: white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1em;
+}
+
+.redirect {
+    background-color: white;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.form-container {
+    padding: 12px;
+}
+
+.user-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-container > * {
+    margin: 0.5em 0;
+}
+
+.row-item-6 {
+    display: grid;
+    grid-template-columns: 16% 20% 16% 16% 16% 16%;;
+    background-color: white;
+    padding: 20px;
+}
+
+.row-item-6 > *, .row-item-3 > * {
+    margin: 0 5px;
+}
+
+.row-item-3 {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    background-color: white;
+    padding: 20px;
+}
+
+.labelled-input {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.input-label {
+    color: black;
+}
+
+.sub-heading {
+    font-weight: bold;
+    font-size: 18;
+    text-align: center;
+}
+
+.button {
+    background-color: #a09fd4;
+    border: solid 0;
+    border-radius: 5px;
+    padding: 7.5px;
+}
+
+.input-text {
+    border-radius: 5px;
+    border: solid 0;
+    background-color: rgba(208, 213, 220, 1);
+    padding: 10px;
+}

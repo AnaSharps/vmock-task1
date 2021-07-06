@@ -63,13 +63,13 @@
           <div class="input-container">
             <div class="labelled-input">
               <p>Username</p>
-              <input name="username" value="<?php echo $username; ?>"/>
+              <input class="input-text" placeholder="Enter username" name="username" value="<?php echo $_POST['username']; ?>"/>
             </div>
             <div class="labelled-input">
               <p>Password</p>
-              <input name="password" value="<?php echo $_POST['password']; ?>" />
+              <input class="input-text" placeholder="Enter password" type="password" name="password" value="<?php echo $_POST['password']; ?>" />
             </div>
-            <input type="submit" value="LOGIN" name="submit" class="login-button" />
+            <input class="button" type="submit" value="LOGIN" name="submit" />
           </div>
           <div class="redirect">
             <p>Don't have an account? <a href="register.php">Register Here!</a></p>

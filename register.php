@@ -5,6 +5,10 @@
     
   if (isset($_SESSION['username'])) {
       header("Location: welcome.php");
+  } else {
+    $_POST['username'] = "";
+    $_POST['password'] = "";
+    $_POST['confirm-password'] = "";
   }
 
   if (isset($_POST['submit'])) {
@@ -63,17 +67,17 @@
             <div class="input-container">
               <div class="labelled-input">
                 <p>Username</p>
-                <input name="username" class="username-register" value="<?php echo $_POST['username']; ?>"/>
+                <input name="username" placeholder="Enter Username" class="input-text" value="<?php echo $_POST['username']; ?>"/>
               </div>
               <div class="labelled-input">
                 <p>Password</p>
-                <input name="password" class="password-register" value="<?php echo $_POST['password']; ?>" />
+                <input name="password" placeholder="Enter Password" type="password" class="input-text" value="<?php echo $_POST['password']; ?>" />
               </div>
               <div class="labelled-input">
                 <p>Confirm Password</p>
-                <input name="confirm-password" class="confirm-password" value="<?php echo $_POST['confirm-password']; ?>" />
+                <input name="confirm-password" placeholder="Re-enter Password" type="password" class="input-text" value="<?php echo $_POST['confirm-password']; ?>" />
               </div>
-              <input type="submit" value="REGISTER" name="submit" class="register-button" />
+              <input type="submit" value="REGISTER" name="submit" class="button" />
             </div>
             <div class="redirect">
               <p>Already have an account? <a href="index.php">Login</a></p>
