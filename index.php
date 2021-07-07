@@ -9,41 +9,36 @@
 
   // echo "am i here?";
   if (isset($_POST['submit'])) {
-    $username = $_POST['username'];
+    $email = $_POST['email'];
     if (!$_POST['password']) {
-      echo "Password should be atleast 6 letters <br/>";
+      echo "Password cannot be empty <br/>";
     }
-    echo $password;
-    // $password = $_POST['password'];
 
     try {
-      $sql = $conn -> prepare("SELECT * FROM demo WHERE (`username`= :username)");
+      $sql = $conn -> prepare("SELECT * FROM demo WHERE (`email`= :email)");
       // $sql -> bindParam(':password', $password);
-      $sql -> bindParam(':username', $username);
+      $sql -> bindParam(':email', $email);
       $sql -> execute();
       
-      echo $sql -> rowCount();
+      // echo $sql -> rowCount();
       $result = $sql -> fetchAll(PDO::FETCH_ASSOC);
       echo count($result);
       if (count($result) > 0) {
         foreach($result as $row) {
           $correctPass = password_verify($_POST['password'], $row['password']);
           if ($correctPass) {
-            $_SESSION['username'] = $row['username'];
+            $_SESSION['username'] = $row['email'];
             header("Location: welcome.php");
           } else {
             echo "Incorrect Password!";
           }
         }
-        // $row = $sql -> fetch(PDO::FETCH_ASSOC);
       } else {
         echo "Wrong email";
       }
     } catch(PDOException $e) {
       echo "Error: " . $e->getMessage();
     }
-    // $sql = "INSERT INTO demo (username, password, role) VALUES ('$username', '$password', 'normal')";
-    // $result = mysqli_query($mysqli, $sql);
   }
     
 ?>
@@ -63,7 +58,7 @@
           <div class="input-container">
             <div class="labelled-input">
               <p>Username</p>
-              <input class="input-text" placeholder="Enter username" name="username" value="<?php echo $_POST['username']; ?>"/>
+              <input class="input-text" placeholder="Enter username" name="email" value="<?php echo $_POST['email']; ?>"/>
             </div>
             <div class="labelled-input">
               <p>Password</p>

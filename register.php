@@ -5,10 +5,6 @@
     
   if (isset($_SESSION['username'])) {
       header("Location: welcome.php");
-  } else {
-    $_POST['username'] = "";
-    $_POST['password'] = "";
-    $_POST['confirm-password'] = "";
   }
 
   if (isset($_POST['submit'])) {
@@ -16,36 +12,28 @@
     
     if ($_POST['password'] === $_POST['confirm-password']) {
       $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+      $email = $_POST['email'];
+      $phone = $_POST['phone'];
     // $password = $_POST['password'];
 
       try {
-        $sql = $conn -> prepare("INSERT INTO demo (username, password, role) VALUES (:username, :password, 'normal')");
+        $sql = $conn -> prepare("INSERT INTO demo (username, password, role, email, phone) VALUES (:username, :password, 'normal', :email, :phone)");
         $sql -> bindParam(':password', $password);
         $sql -> bindParam(':username', $username);
+        $sql -> bindParam(':email', $email);
+        $sql -> bindParam(':phone', $phone);
         $sql -> execute();
 
         echo "hello there!";
         $_POST['username'] = "";
         $_POST['password'] = "";
         $_POST['confirm-password'] = "";
+        $_POST['email'] = "";
+        $_POST['phone'] = "";
         header("Location: index.php");        
       } catch(PDOException $e) {
           echo "Error: " . $e->getMessage();
       }
-
-
-      $sql = "INSERT INTO demo (username, password, role) VALUES ('$username', '$password', 'normal')";
-      // $result = mysqli_query($mysqli, $sql);
-      
-      // if (!$result) {
-      //   echo "Woops! Something went wrong!";
-      // } else {
-      //   echo "hello there!";
-      //   $_POST['username'] = "";
-      //   $_POST['password'] = "";
-      //   $_POST['confirm-password'] = "";
-      //   header("Location: index.php");
-      // }
     } else {
       echo "Passwords do not match!";
     }
@@ -68,6 +56,14 @@
               <div class="labelled-input">
                 <p>Username</p>
                 <input name="username" placeholder="Enter Username" class="input-text" value="<?php echo $_POST['username']; ?>"/>
+              </div>
+              <div class="labelled-input">
+                <p>Email</p>
+                <input name="email" placeholder="Enter Email" class="input-text" value="<?php echo $_POST['email']; ?>"/>
+              </div>
+              <div class="labelled-input">
+                <p>Phone</p>
+                <input maxlength="10" name="phone" placeholder="Enter Phone" class="input-text" value="<?php echo $_POST['phone']; ?>"/>
               </div>
               <div class="labelled-input">
                 <p>Password</p>

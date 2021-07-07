@@ -1,5 +1,6 @@
 body {
     margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 .main-container {
     height: -webkit-fill-available;
@@ -37,51 +38,183 @@ body {
     margin: 0.5em 0;
 }
 
-.row-item-6 {
-    display: grid;
-    grid-template-columns: 16% 20% 16% 16% 16% 16%;;
+.hover-container {
+    padding-bottom: 10px;
+    padding-top: 10px;
+    -webkit-box-shadow: inset 0 -1px 0 0 rgb(100 121 143 / 12%);
+    box-shadow: inset 0 -1px 0 0 rgb(100 121 143 / 12%);
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    position: relative;
     background-color: white;
-    padding: 20px;
 }
 
-.row-item-6 > *, .row-item-3 > * {
-    margin: 0 5px;
+.hover-container > * {
+    empty-cells: show;
+    height: 40px;
+    outline: none;
+    padding: 0;
+    vertical-align: middle;
+    white-space: nowrap;
+    -webkit-align-items: center;
+    align-items: center;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-flex: 0 0 auto;
+    -webkit-flex: 0 0 auto;
+    flex: 0 0 auto;
+    line-height: 20px;
+    -webkit-box-ordinal-group: 1;
+    -webkit-order: 1;
+    order: 1;
 }
 
-.row-item-3 {
-    display: grid;
-    grid-template-columns: auto auto auto;
+.hover-container:hover {
+    position: relative;
+    box-shadow: inset 1px 0 0 #dadce0, inset -1px 0 0 #dadce0, 0 1px 2px 0 rgb(60 64 67 / 30%), 0 1px 3px 1px rgb(60 64 67 / 15%);
+    z-index: 2;
+}
+
+.button-container {
+    margin-right: 8px;
+    display: none;
+    gap: 5px;
+}
+
+.hover-container:hover > .button-container {
+    display: flex;
+    position: absolute;
+    right: 0;
+    z-index: 2;
     background-color: white;
-    padding: 20px;
 }
 
 .labelled-input {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     justify-content: flex-start;
+    width: 100%;
 }
 
 .input-label {
     color: black;
 }
 
+.new-button-container {
+    display: flex;
+    gap: 5px;
+}
+
 .sub-heading {
     font-weight: bold;
     font-size: 18;
-    text-align: center;
+    text-align: left;
+    margin: 0;
 }
 
-.button {
+.button, .button-all {
     background-color: #a09fd4;
     border: solid 0;
     border-radius: 5px;
     padding: 7.5px;
+    cursor: pointer;
+}
+
+.row-item-heading {
+    display: grid;
+    grid-template-columns: 5% 20% 20% 20% 17% 17%;
+    padding: 12px;
+    padding-bottom: 0;
+    flex-grow: 1;
+}
+
+/* .input-text { */
+    /* border-radius: 2px;
+    border: solid #eae7e785 0.25px;
+    background-color: rgb(211 215 222 / 18%);
+    padding: 15px 10px;
+} */
+
+.form-main-container {
+    background-color: white;
+    margin: 10%;
+    height: fit-content;
+    padding: 24px;
+}
+
+.details-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.details-container > * {
+    padding: 8px;
+}
+
+.labelled-input > * {
+    width: 100%;
+}
+
+.back_container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.back_container > * {
+    padding: 0 5px;
+}
+
+.back_container:hover {
+    cursor: pointer;
+}
+
+.checkbox-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 80%;
+    /* height: 60%; */
+}
+
+.input-container > * {
+    margin-bottom: 1em;
+}
+
+.labelled-input > * {
+    margin: 0;
 }
 
 .input-text {
     border-radius: 5px;
     border: solid 0;
-    background-color: rgba(208, 213, 220, 1);
+    background-color: rgba(231, 240, 254, 1);
     padding: 10px;
+    width: 100%;
+}
+
+.icon-input {
+    display: flex;
+    align-items: center;
+    background-color: rgba(231, 240, 254, 1);
+}
+
+.icon-input > .fa-pencil-square-o {
+    height: 100%;
+    margin-right: 0;
+    font-size: larger;
+    padding-right: 8px;
 }
